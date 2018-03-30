@@ -45,7 +45,9 @@ class TasksController < ApplicationController
     flash[:success] = 'Task は正常に削除されました'
     redirect_to tasks_url
   end
-end
-def task_params
+  #この中にprivateメソッドとしてストロングパラメータを設定
+  private
+  def task_params
     params.require(:task).permit(:content)
+  end
 end
