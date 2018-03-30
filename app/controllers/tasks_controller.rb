@@ -3,11 +3,11 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
   def show
-    @tasks = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def new
-    @tasks = Task.new
+    @task = Task.new
   end
 
   def create
@@ -45,4 +45,7 @@ class TasksController < ApplicationController
     flash[:success] = 'Task は正常に削除されました'
     redirect_to tasks_url
   end
+end
+def task_params
+    params.require(:task).permit(:content)
 end
